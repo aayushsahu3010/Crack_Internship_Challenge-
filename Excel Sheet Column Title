@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+      char c = 'A';
+      string ans ="";
+      int n = columnNumber;
+      while(n>0){
+            n--;
+            int reminder = n%26;
+            n = n/26;
+            ans.push_back(reminder+'A');
+      }
+            reverse(ans.begin(),ans.end());
+      return ans ;
+    }
+};
