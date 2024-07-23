@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+         map<int ,int >occurences ;
+            int val =(nums.size()/2);
+    int ans =-1;
+         for(int num:nums){
+            occurences[num]++;
+         }
+         for (const auto&pair : occurences ){
+            if(pair.second>val){
+                 ans =  pair.first;
+              
+            }
+         }
+        
+        return ans ;
+    }
+};
