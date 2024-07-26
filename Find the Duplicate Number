@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+      int ans =0;
+       map<int ,int> occur ;
+       for( int i =0 ;i<nums.size();i++){
+           occur[nums[i]]++;
+       }
+
+       for (auto & pairs:occur){
+            if(pairs.second>1){
+                ans = pairs.first;
+            }
+       }
+
+       return ans ;
+       
+    }
+};
