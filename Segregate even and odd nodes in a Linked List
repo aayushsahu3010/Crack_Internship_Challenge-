@@ -1,0 +1,28 @@
+class Solution {
+public:
+    ListNode* segregateEvenOdd(ListNode* head) {
+        if (!head || !head->next) return head;
+
+        ListNode *evenHead = new ListNode(0), *evenTail = evenHead;
+        ListNode *oddHead = new ListNode(0), *oddTail = oddHead;
+
+        while (head) {
+            if (head->val % 2 == 0) {
+                evenTail->next = head;
+                evenTail = evenTail->next;
+            } else {
+                oddTail->next = head;
+                oddTail = oddTail->next;
+            }
+            head = head->next;
+        }
+
+        evenTail->next = oddHead->next;
+        oddTail->next = nullptr;
+
+        ListNode* result = evenHead->next;
+        delete evenHead;
+        delete oddHead;
+        return result;
+    }
+};
