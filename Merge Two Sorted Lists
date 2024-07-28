@@ -1,0 +1,45 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+   vector<int> linkedlist_to_vector(ListNode* list) {
+        vector<int> result;
+        ListNode* temp = list;
+        while (temp) {
+            result.push_back(temp->val);
+            temp = temp->next;
+        }
+        return result;
+    }
+
+    ListNode* vector_to_linkedlist(vector<int>& vec) {
+        if (vec.empty()) return nullptr;
+        ListNode* head = new ListNode(vec[0]);
+        ListNode* current = head;
+        for (size_t i = 1; i < vec.size(); ++i) {
+            current->next = new ListNode(vec[i]);
+            current = current->next;
+        }
+        return head;
+    }
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+       std::vector<int> listone = linkedlist_to_vector(list1);
+        std::vector<int> listtwo = linkedlist_to_vector(list2);
+        
+        // Use predefined insert function to append listone to listtwo
+        listtwo.insert(listtwo.end(), listone.begin(), listone.end());
+
+        // Use predefined sort function to sort the combined vector
+        std::sort(listtwo.begin(), listtwo.end());
+
+        return vector_to_linkedlist(listtwo);
+    }
+};
