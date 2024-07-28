@@ -1,0 +1,19 @@
+class Solution
+{
+    public:
+    Node *compute(Node *head)
+    {
+        Node * temp = head;
+        if(temp->next==NULL){
+            return temp;
+        }
+        Node *connect = compute(temp->next);
+        if(temp->data>=connect->data){
+            temp->next=connect;
+            return temp;
+        }
+        
+        return connect;
+    }
+    
+};
