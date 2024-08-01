@@ -1,0 +1,27 @@
+class Solution {
+    bool check_pallindrome (string s,int left ,int right ){
+        while(left<right){
+            if(s[left]!=s[right]){
+                return false;
+            }
+            right--;
+            left++;
+        }
+        return true ;
+    }
+public:
+    bool validPalindrome(string s) {
+        bool result =0;
+        int left =0,right=s.length()-1;
+        while(left<right){
+            if(s[left]==s[right]){
+                left++;
+                right--;
+            }
+         else{
+              return   check_pallindrome(s,left+1,right) || check_pallindrome(s,left,right-1);
+         }
+        }   
+      return true;
+    }
+};
