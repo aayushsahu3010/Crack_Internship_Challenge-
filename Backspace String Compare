@@ -1,0 +1,17 @@
+class Solution {
+      string buildString(string& str) {
+        string result;
+        for (char ch : str) {
+            if (ch == '#') {
+                if (!result.empty()) result.pop_back();
+            } else {
+                result.push_back(ch);
+            }
+        }
+        return result;
+    }
+public:
+  bool backspaceCompare(std::string s, std::string t) {
+        return buildString(s) == buildString(t);
+    }
+};
