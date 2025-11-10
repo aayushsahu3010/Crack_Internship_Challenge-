@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void reverse_symeetric_pattern(int n){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=i;j++){
+            cout<<"*";
+        }
+        for(int space =0;space<2*(n-i-1);space++){
+            cout<<" ";
+        }
+        
+        for(int j=0;j<=i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+void Symmetric_Void_Pattern(int n){
+    for(int i =0;i<n;i++){
+        for(int j =0;j<n-i;j++){
+            cout<<"*";
+        }
+        for(int space =0;space<i;space++){
+            cout<<" ";
+        }
+        for(int space =0;space<i;space++){
+            cout<<" ";
+        }
+        for(int j=0;j<n-i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    reverse_symeetric_pattern(n);
+}
+
+
+int main()
+{
+Symmetric_Void_Pattern(5);
+    return 0;
+}
