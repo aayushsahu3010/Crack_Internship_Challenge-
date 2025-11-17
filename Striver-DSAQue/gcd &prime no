@@ -22,11 +22,44 @@ int lcm(int a, int b)
 {
     return (a * b) / GCD(a, b);
 }
+bool isArmstrong(int n)
+{
+    long copyn = n;
+    long ans = 0 ;
+    while (n != 0)
+    {
+        int digit = n % 10;
+        n = n / 10 ;
+        ans = ans + (digit * digit * digit);
+    }
+    return ans == copyn;
+}
+
+vector<int> divisors(int n) {
+        vector<int>ans;
+        for(int i =1;i<=n;i++){
+            if(n%i==0){
+                ans.push_back(i);
+            }
+
+        }
+        return ans;
+    }
+
+void vectraversal(vector<int> n)
+{
+    for (auto i = n.begin(); i < n.end(); i++)
+    {
+        cout << *i << " ";
+    }
+}
 int main()
 {
     // vectraversal(countPrimes(30));
-cout<<"GCD of 56 and 98 is: "<<GCD(56,98)<<endl;
-    cout<<"LCM of 56 and 98 is: "<<lcm(56,98)<<endl;
-
+    cout << "GCD of 56 and 98 is: " << GCD(56, 98) << endl;
+    cout << "LCM of 56 and 98 is: " << lcm(56, 98) << endl;
+    cout << "Is 153 an Armstrong number? " << (isArmstrong(153) ? "Yes" : "No") << endl;
+    cout<<"Divisors of 28 are: ";
+    vectraversal(divisors(28));
     return 0;
 }
