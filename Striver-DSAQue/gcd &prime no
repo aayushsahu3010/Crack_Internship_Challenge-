@@ -1,0 +1,28 @@
+int GCD(int a, int b)
+{
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+        {
+            a=a%b;
+        }
+        else
+        {
+            b=b%a;
+        }
+    }
+    if (a == 0)
+        return b;
+    else
+    {
+        return a;
+    }
+}
+int main()
+{
+    // vectraversal(countPrimes(30));
+cout<<"GCD of 56 and 98 is: "<<GCD(56,98)<<endl;
+    
+
+    return 0;
+}
