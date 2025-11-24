@@ -156,6 +156,18 @@ int height(node*root){
      
 }
 
+
+int node_sum(node* root){
+    if(root ==NULL){
+        return 0;
+    }
+    int ans = root->val;
+    int leftsum = node_sum(root->left);
+    int rightsum  =node_sum(root->right);
+    return (ans+leftsum+rightsum);
+}
+
+
 int main()
 {
     vector<int> v = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
