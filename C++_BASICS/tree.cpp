@@ -31,6 +31,14 @@ node *create_binary_Tree(vector<int> preorder)
     return root;
 }
 
+
+int count_nodes(node*root){
+    if(root == NULL){
+        return 0;
+    }
+    return count_nodes(root->left)+count_nodes(root->right)+1;
+}
+
 void preoder_traversal(node *root)
 {
     if (root == NULL)
