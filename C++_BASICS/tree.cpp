@@ -31,14 +31,6 @@ node *create_binary_Tree(vector<int> preorder)
     return root;
 }
 
-
-int count_nodes(node*root){
-    if(root == NULL){
-        return 0;
-    }
-    return count_nodes(root->left)+count_nodes(root->right)+1;
-}
-
 void preoder_traversal(node *root)
 {
     if (root == NULL)
@@ -71,6 +63,15 @@ void postoder_traversal(node *root)
     postoder_traversal(root->left);
     postoder_traversal(root->right);
     cout << root->val << " ";
+}
+
+int count_nodes(node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    return count_nodes(root->left) + count_nodes(root->right) + 1;
 }
 
 void levelorder_traversal(node *root)
@@ -125,7 +126,7 @@ void levelorder_traversal2(node *root)
                 q.push(NULL);
                 continue;
             }
-            else 
+            else
             {
                 break;
             }
@@ -145,33 +146,52 @@ void levelorder_traversal2(node *root)
     cout << endl;
 }
 
-int height(node*root){
-    if(root ==NULL){
+int height(node *root)
+{
+    if (root == NULL)
+    {
         return 0;
     }
     int leftht = height(root->left);
     int rightht = height(root->right);
-    return max(leftht,rightht)+1;
-
-     
+    return max(leftht, rightht) + 1;
 }
 
-
-int node_sum(node* root){
-    if(root ==NULL){
+int node_sum(node *root)
+{
+    if (root == NULL)
+    {
         return 0;
     }
     int ans = root->val;
     int leftsum = node_sum(root->left);
-    int rightsum  =node_sum(root->right);
-    return (ans+leftsum+rightsum);
+    int rightsum = node_sum(root->right);
+    return (ans + leftsum + rightsum);
 }
 
+bool identical_trees(node *root1, node *root2)
+{
+    if (root1 == NULL || root2 == NULL)
+    {
+        return root1 == root2;
+    }
+
+    bool isleft = identical_trees(root1->left, root2->left);
+    bool isright = identical_trees(root1->right, root2->right);
+
+    return (isleft && isright && (root1->val == root2->val));
+}
 
 int main()
 {
     vector<int> v = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
+    vector<int> v1 = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
+
+    index = -1;
     node *root = create_binary_Tree(v);
+    index = -1;
+    node *root2 = create_binary_Tree(v1);
+
     preoder_traversal(root);
     cout << endl;
     postoder_traversal(root);
@@ -180,6 +200,11 @@ int main()
     cout << endl;
     levelorder_traversal(root);
     levelorder_traversal2(root);
-    cout<<height(root)<<endl;
+    cout << height(root) << endl;
+    cout << count_nodes(root) << endl;
+
+    cout << node_sum(root) << endl;
+
+    cout << identical_trees(root, root2);
     return 0;
 }
