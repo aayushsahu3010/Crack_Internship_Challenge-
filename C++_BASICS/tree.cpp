@@ -266,11 +266,11 @@ int main()
     index = -1;
     node *root2 = create_binary_Tree(v1);
 
-    preoder_traversal(root);
+    preorder_traversal(root);
     cout << endl;
-    postoder_traversal(root);
+    postorder_traversal(root);
     cout << endl;
-    inoder_traversal(root);
+    inorder_traversal(root);
     cout << endl;
     levelorder_traversal(root);
     levelorder_traversal2(root);
@@ -279,6 +279,10 @@ int main()
 
     cout << node_sum(root) << endl;
 
-    cout << identical_trees(root, root2);
+    cout << identical_trees(root, root2) << endl;
+    topview(root);
+
+    kth_level(root,3);
+
     return 0;
 }
