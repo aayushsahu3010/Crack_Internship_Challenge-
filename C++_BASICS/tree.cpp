@@ -16,6 +16,42 @@ public:
     }
 };
 
+void topview(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    queue<pair<node *, int>> q;
+    map<int, int> m;
+    q.push({root, 0});
+    while (q.size() > 0)
+    {
+        node *curr = q.front().first;
+        int hd = q.front().second;
+        q.pop();
+        if (m.find(hd) == m.end())
+        {
+            m[hd] = curr->val;
+        }
+        if (curr->left != NULL)
+        {
+            q.push({curr->left, hd - 1});
+        }
+        if (curr->right != NULL)
+        {
+            q.push({curr->right, hd + 1});
+        }
+    }
+    for (auto it : m)
+    {
+        cout << it.second << " ";
+    }
+    cout << endl;
+}
+
+
 node *create_binary_Tree(vector<int> preorder)
 {
 
