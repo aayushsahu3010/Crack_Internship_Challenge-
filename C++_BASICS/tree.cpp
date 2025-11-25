@@ -218,6 +218,44 @@ bool identical_trees(node *root1, node *root2)
     return (isleft && isright && (root1->val == root2->val));
 }
 
+
+
+void bottom_view(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    queue<pair<node *, int>> q;
+    map<int, int> m;
+    q.push({root, 0});
+    while (q.size() > 0)
+    {
+        node *curr = q.front().first;
+        int hd = q.front().second;
+        q.pop();
+
+        m[hd] = curr->val;
+
+        if (curr->left != NULL)
+        {
+            q.push({curr->left, hd - 1});
+        }
+        if (curr->right != NULL)
+        {
+            q.push({curr->right, hd + 1});
+        }
+    }
+    for (auto it : m)
+    {
+        cout << it.second << " ";
+    }
+    cout << endl;
+}
+
+
+
 int main()
 {
     vector<int> v = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
