@@ -154,6 +154,48 @@ public:
     }
 };
 
+
+
+void bfs(int adj[][5],int start , int n ){
+        queue<int>q;
+        bool visited[5]={false};
+        q.push(start);
+        visited[start]=1;
+        while (q.size()>0)
+        {
+            int u = q.front();
+            cout<<u<<" ";
+            /* code */
+            q.pop();
+
+            for(int i =0 ;i<n;i++){
+                if(!visited[i] && adj[u][i]==1){
+                    visited[i]=1;
+                    q.push(i);   
+                }
+            }
+        }
+        cout<<endl;
+        
+}
+
+void dfs(int start, int adj[][5], int n , bool visited[]){
+    cout<<start<<" ";
+    visited[start]=1;
+
+    for (int  i = 0; i < n; i++)
+    {
+        if(adj[start][i]==1 && !visited[i]){
+            dfs(i,adj,n,visited);
+        }
+     
+    }
+    
+}
+
+
+
+
 int main()
 {
     node *root = NULL;
