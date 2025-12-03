@@ -38,6 +38,20 @@ void selection_sort(vector<int>&arr){
     
 }
 
+void Recusrive_bubble(vector<int> &arr, int n) {
+    if (n == 1) return;
+
+    // One bubble pass
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            swap(arr[i], arr[i + 1]);
+        }
+    }
+
+    // Solve the smaller problem
+    Recusrive_bubble(arr, n - 1);
+}
+
 void Traversal(vector<int> arr)
 {
     for (int ele : arr)
