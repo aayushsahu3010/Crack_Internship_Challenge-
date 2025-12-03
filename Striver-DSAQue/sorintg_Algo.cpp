@@ -60,6 +60,26 @@ void Traversal(vector<int> arr)
     }
     cout << endl;
 }
+
+ void Recursion_insertionSort(vector<int> &arr, int n) {
+        // Base case: 1 element is always sorted
+        if (n <= 1) return;
+
+ 
+        insertionSort(arr, n - 1);
+
+    
+        int key = arr[n - 1];
+        int j = n - 2;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+
 int main()
 {
     vector<int> arr = {7, 6, 5, 4, 3, 2, 1};
